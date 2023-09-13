@@ -22,7 +22,7 @@ Formed in November 2022, Callahan Ventures LLC is a software development company
 
 - **Description:** Coming Soon
 - **Technologies Used:** Coming Soon
-- - **Link:** Coming Soon
+- **Link:** Coming Soon
 
 ## Our Services
 
