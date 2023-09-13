@@ -12,7 +12,7 @@ Formed in November 2023, Callahan Ventures LLC is a software development company
 
 ![Project Image](project_files/proxy.png)
 
-- **Description:** Briefly describe the project and its goals.
+- **Description:** Checks proxies using scamanalytics without the use of an api.
 - **Technologies Used:** Developed using Requests in Python 3.10.
 - **Link:** (https://github.com/CallahanVentures/Portfolio/tree/main/ProxyChecker)
 
@@ -20,15 +20,15 @@ Formed in November 2023, Callahan Ventures LLC is a software development company
 
 ![Project Image](project2_image.jpg)
 
-- **Description:** Briefly describe the project and its goals.
-- **Technologies Used:** List the technologies, tools, and languages used.
-- **Link:** Provide a link to the project repository or website if available.
+- **Description:** Coming Soon
+- **Technologies Used:** Coming Soon
+- - **Link:** Coming Soon
 
 ## Our Services
 
-- **Service 1:** Describe your first service offering.
-- **Service 2:** Describe your second service offering.
-- **Service 3:** Describe your third service offering.
+- **Service 1:** Desktop application development on Windows platforms.
+- **Service 2:** Website development w/ & w/out a Content Mangement System like Wordpress.
+- **Service 3:** POS Sale Machine Implementation With Custom Scripts.
 
 ## Contact Us
 
