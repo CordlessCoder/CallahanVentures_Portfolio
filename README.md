@@ -27,8 +27,8 @@ Formed in November 2022, Callahan Ventures LLC is a software development company
 ## Our Services
 
 - **Service 1:** Desktop application development on Windows platforms.
-- **Service 2:** Website development w/ & w/out a Content Mangement System like Wordpress.
-- **Service 3:** POS Sale Machine Implementation With Custom Scripts.
+- **Service 2:** POS Sale Machine implementation with custom scripts.
+- **Service 3:** Website development with & without a Content Mangement System like Wordpress.
 
 ## Contact Us
 
