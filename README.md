@@ -4,7 +4,7 @@ Welcome to the Callahan Ventures LLC Portfolio! Here you'll find all of our nonc
 
 ## About Us
 
-Formed in November 2022, Callahan Ventures LLC is a software development company with a focus on developing seamless desktop applications and flawless websites.  With over 3 decades of combined experience, we guarantee a functional yet fitting solution to all of your  
+Formed in November 2022, Callahan Ventures LLC is a software development company with a focus on developing seamless desktop applications and flawless websites.  With over 3 decades of combined experience, we guarantee a functional yet fitting solution to all of your software needs! 
 
 ## Our Services
 
