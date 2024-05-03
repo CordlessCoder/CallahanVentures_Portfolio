@@ -1,4 +1,4 @@
-![Logo](https://callahanventures.com/index_files/Wordpress.png)
+![Logo](https://callahanventures.com/assets/pngs/Logo.png)
 # Python Projects
 
 This directory contains all of the Python3 projects designed by Our Devs under non-contractual obligations.
