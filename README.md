@@ -17,8 +17,9 @@ Formed in November 2022, Callahan Ventures LLC is a software development company
 Have a project in mind or questions about our services? Feel free to reach out to us:
 
 - **Email:** [wcallahan@callahanventures.com](mailto:wcallahan@callahanventures.com)
-- **Phone:** 267-207-7235
-- **LinkedIn:** [Callahan Ventures on LinkedIn](https://www.linkedin.com/company/callahanventures)
+- **LinkedIn:** https://www.linkedin.com/company/callahanventures
+- **Phone:** [914-801-7995](tel:+19148017995)
+- **Website:** [Check Us Out](https://www.linkedin.com/company/callahanventures)
 
 ---
 
