@@ -35,7 +35,7 @@ These are the non-package requirements to run this application.
 
 ## Demo
 
-(assets/Demo.gif)
+![](assets/Demo.gif)
 
 ## Credits
 
