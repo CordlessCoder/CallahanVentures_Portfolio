@@ -4,15 +4,29 @@
 
 GSP Pro was developed for the primary purposes of Lead Generation and Pentesting by utilizing Google Dorks. By downloading, using, and, or any other means of interacting with the code, the end user agrees to voluntarily relinquish their rights to legal action towards the individuals associated with its creation and to follow all laws in their jurisdiction as defined by their country of citizenship and, or residence.
 
+This includes but is not limited to:
+
+- Following email sending guidelines, assuming GSP is used for lead generation.
+- Only dorking domains you have permission to scan.
+- Reporting any personal information found to the company in question as per regulatory guidelines.
+
 ## Features
 
 - Automatic Data Backups
 - Automatic Search Parsing
+- Multithreaded Parsing
 - Proxy Rotation
 - Proxy Support (HTTP/HTTPS/SOCKS4/SOCKS5)
 - Proxy Verification
 - RECAPTCHAV2 Detection
 - RECAPTCHAV2 Solving
+- Vulnerability Scanner
+
+## Roadmap
+
+- browserv2.py - Rewrite browser.py to use pyppeteer to utilize an actual headless driver, instead of simply placing the window off screen.
+- crash.py - Implement crash reporting to data/crashReports further logging potential issues during runtime.
+-
 
 ## System Requirements
 
