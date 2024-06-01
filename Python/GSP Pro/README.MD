@@ -57,7 +57,7 @@ These are the non-package requirements to run this application.
 
 ![](assets/Demo.gif)
 
-### 📊 Result Output
+### 📊 Results
 
 ![](assets/Demo-Result.JPG)
 
