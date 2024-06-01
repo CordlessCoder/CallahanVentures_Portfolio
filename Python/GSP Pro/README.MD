@@ -49,7 +49,8 @@ These are the non-package requirements to run this application.
 - Install the required dependencies using `pip install -r requirements.txt`.
 - Place your queries in `queries.txt`.
 - Place your proxies in `proxies.txt`.
-- Run the application using `python main.py`.
+
+**Note:** To run the application, open Command Prompt and navigate to the directory containing `main.py`, then execute the following command: `<your python path variable ex: 'python' or 'python3'> main.py`.
 
 **ADVANCED USER NOTICE:** If you are familiar with configuration files, feel free to modify the included `config.ini` file to fully utilize our application!
 
