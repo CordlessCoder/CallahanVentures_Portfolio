@@ -2,7 +2,7 @@
 
 ## Description
 
-GSP Pro is a sophisticated tool designed to enhance your web scraping capabilities. Developed with love by Callahan Ventures LLC, this application provides a seamless solution for automating data extraction tasks, bypassing RECAPTCHAV2 challenges, and ensuring smooth proxy rotation and verification.
+GSP Pro was developed for the primary purposes of Lead Generation and Pentesting by utilizing Google Dorks. By downloading, using, and, or any other means of interacting with the code, the end user agrees to voluntarily relinquish their rights to legal action towards the individuals associated with its creation and to follow all laws in their jurisdiction as defined by their country of citizenship and, or residence.
 
 ## Features
 
@@ -47,6 +47,6 @@ Special Thanks To:
 
 ## Legal Disclaimer
 
-GSP Pro's use cases may extend beyond what we can define. We will provide a general disclaimer about its usage.
+GSP Pro's use cases may extend beyond what we can define. We will provide a general disclaimer about its usage.
 
 GSP Pro was developed for the primary purposes of Lead Generation and Pentesting by utilizing Google Dorks. By downloading, using, and, or any other means of interacting with the code, the end user agrees to voluntarily relinquish their rights to legal action towards the individuals associated with its creation and to follow all laws in their jurisdiction as defined by their country of citizenship and, or residence.
