@@ -24,9 +24,16 @@ This includes but is not limited to:
 
 ## Roadmap
 
-- browserv2.py - Rewrite browser.py to use pyppeteer to utilize an actual headless driver, instead of simply placing the window off screen.
-- crash.py - Implement crash reporting to data/crashReports further logging potential issues during runtime.
--
+Bug Fixes:
+
+- utilities.proxy.valid_proxy() - Add more error handling to this function to handle potential additional errors
+- utilities.browser.swap_proxy() - Fix this function to properly swap proxies without crashing the specified thread
+
+Utility Files
+
+- browserv2.py - Rewrite browser.py to use pyppeteer to utilize an actual headless driver instead of simply placing the window off-screen.
+- crash.py - Implement crash reporting to data/crashReports, logging potential issues during runtime.
+- logger.py - Implement a runtime logger similar to crash.py, except this will run independently of any crash handling.
 
 ## System Requirements
 
