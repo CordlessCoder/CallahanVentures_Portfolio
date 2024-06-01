@@ -44,9 +44,3 @@ Developed with 💙 by Callahan Ventures LLC - [Visit our website](https://calla
 Special Thanks To:
 
 - [sarperavci](https://github.com/sarperavci/GoogleRecaptchaBypass) for providing a blueprint on solving RECAPTCHAV2.
-
-## Legal Disclaimer
-
-GSP Pro's use cases may extend beyond what we can define. We will provide a general disclaimer about its usage.
-
-GSP Pro was developed for the primary purposes of Lead Generation and Pentesting by utilizing Google Dorks. By downloading, using, and, or any other means of interacting with the code, the end user agrees to voluntarily relinquish their rights to legal action towards the individuals associated with its creation and to follow all laws in their jurisdiction as defined by their country of citizenship and, or residence.
