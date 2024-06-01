@@ -59,7 +59,7 @@ These are the non-package requirements to run this application.
 
 ### 📊 Result Output
 
-![](assets/Demo-Result.jpg)
+![](assets/Demo-Result.JPG)
 
 ## 🌟 Credits
 
