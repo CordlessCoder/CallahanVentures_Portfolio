@@ -1,6 +1,6 @@
 ![Logo](assets/GSP-logo.jpg)
 
-## Description
+## 📜 Description
 
 GSP Pro was developed for the primary purposes of Lead Generation and Pentesting by utilizing Google Dorks. By downloading, using, and, or any other means of interacting with the code, the end user agrees to voluntarily relinquish their rights to legal action towards the individuals associated with its creation and to follow all laws in their jurisdiction as defined by their country of citizenship and, or residence.
 
@@ -10,32 +10,31 @@ This includes but is not limited to:
 - Only dorking domains you have permission to scan.
 - Reporting any personal information found to the company in question as per regulatory guidelines.
 
-## Features
+## ✨ Features
 
 - Automatic Data Backups
-- Automatic Search Parsing
+- Memory Load Monitor
 - Multithreaded Parsing
 - Proxy Rotation
 - Proxy Support (HTTP/HTTPS/SOCKS4/SOCKS5)
 - Proxy Verification
-- RECAPTCHAV2 Detection
-- RECAPTCHAV2 Solving
+- RECAPTCHAV2 Solver
 - Vulnerability Scanner
 
-## Roadmap
+## 🛠️ Roadmap
 
-Bug Fixes:
+**Bug Fixes:**
 
-- utilities.proxy.valid_proxy() - Add more error handling to this function to handle potential additional errors
-- utilities.browser.swap_proxy() - Fix this function to properly swap proxies without crashing the specified thread
+- `utilities.proxy.valid_proxy()` - Add more error handling to this function to handle potential additional errors
+- `utilities.browser.swap_proxy()` - Fix this function to properly swap proxies without crashing the specified thread
 
-Utility Files
+**Utility Files:**
 
-- browserv2.py - Rewrite browser.py to use pyppeteer to utilize an actual headless driver instead of simply placing the window off-screen.
-- crash.py - Implement crash reporting to data/crashReports, logging potential issues during runtime.
-- logger.py - Implement a runtime logger similar to crash.py, except this will run independently of any crash handling.
+- `browserv2.py` - Rewrite `browser.py` to use pyppeteer to utilize an actual headless driver instead of simply placing the window off-screen.
+- `crash.py` - Implement crash reporting to `data/crashReports`, logging potential issues during runtime.
+- `logger.py` - Implement a runtime logger similar to `crash.py`, except this will run independently of any crash handling.
 
-## System Requirements
+## 💻 System Requirements
 
 These are the non-package requirements to run this application.
 
@@ -44,24 +43,28 @@ These are the non-package requirements to run this application.
 - Python 3.10 (64 bit) - [Download link](https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe)
 - Windows 10
 
-## Installation
+## ⚙️ Installation
 
 - Clone the repository to your local machine.
 - Install the required dependencies using `pip install -r requirements.txt`.
-- Place your queries in 'queries.txt'
-- Place your proxies in 'proxies.txt'
+- Place your queries in `queries.txt`.
+- Place your proxies in `proxies.txt`.
 - Run the application using `python main.py`.
 
--ADVANCED USER NOTICE: If you are familiar with configuration files, feel free to modify the included 'config.ini' file to fully utilize our application!
+**ADVANCED USER NOTICE:** If you are familiar with configuration files, feel free to modify the included `config.ini` file to fully utilize our application!
 
-## Demo
+## 🎥 Demonstration
 
 ![](assets/Demo.gif)
 
-## Credits
+### 📊 Result Output
 
-Developed with 💙 by Callahan Ventures LLC - [Visit our website](https://callahanventures.com/)
+![](assets/Demo-Result.jpg)
 
-Special Thanks To:
+## 🌟 Credits
 
-- [sarperavci](https://github.com/sarperavci/GoogleRecaptchaBypass) for providing a blueprint on solving RECAPTCHAV2.
+**Developed with 💙 by [Callahan Ventures LLC](https://callahanventures.com/)**
+
+### Special Thanks To:
+
+- **[sarperavci](https://github.com/sarperavci/GoogleRecaptchaBypass)** for providing a repository to solve RECAPTCHA V2.
