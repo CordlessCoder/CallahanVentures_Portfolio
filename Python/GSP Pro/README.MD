@@ -7,7 +7,7 @@ GSP Pro was developed for the primary purposes of Lead Generation and Pentesting
 This includes but is not limited to:
 
 - Following email sending guidelines, assuming GSP is used for lead generation.
-- Only dorking domains you have permission to scan.
+- Only dorking domains you have permission to scan, assuming GSP is used for pentesting.
 - Reporting any personal information found to the company in question as per regulatory guidelines.
 
 ## ✨ Features
