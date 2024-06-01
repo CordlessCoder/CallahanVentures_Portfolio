@@ -50,7 +50,10 @@ These are the non-package requirements to run this application.
 - Place your queries in `queries.txt`.
 - Place your proxies in `proxies.txt`.
 
-**Note:** To run the application, open Command Prompt and navigate to the directory containing `main.py`, then execute the following command: `<your python path variable ex: 'python' or 'python3'> main.py`.
+**Note:** To run the application, open Command Prompt and navigate to the directory containing `main.py`, then execute the following command: `<your python path variable> main.py`
+
+- Example 1: `python main.py`
+- Example 2: `python3 main.py`.
 
 **ADVANCED USER NOTICE:** If you are familiar with configuration files, feel free to modify the included `config.ini` file to fully utilize our application!
 
