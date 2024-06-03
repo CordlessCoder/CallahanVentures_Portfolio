@@ -1,4 +1,4 @@
-# Color Converter using NextJS
+# Color Converter
 
 This project is a simple color converter built with Next.js. It allows users to pick a color, see its RGB and HEX values, and convert between these formats.
 
