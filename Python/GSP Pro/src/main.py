@@ -1,70 +1,55 @@
+#!/usr/bin/env python3
 # main.py
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from utilities.backup import backup_last_session
 from utilities.branding import show_branding
 from utilities.browser import *
-from utilities.config import load_config, config
+from utilities.config import Config, load_config
 from utilities.query import *
 from utilities.scanner import check_links_for_keywords
 from utilities.search import *
-from utilities.threads import calc_safe_threads, get_thread_id
+from utilities.colored import print_red, print_blue, print_green
+from utilities.threads import get_thread_id
+from typing import Optional, Tuple, List
 
-# utilities.browser imports:
-# print_green, print_red, print_blue from colored.py
 # All functions from: errors.py
 # random_proxy, valid_proxy, valid_type from proxy.py
 # RecaptchaSolver() from recaptcha.py
 
-def main():
+
+def main() -> None:
     show_branding()
     backup_last_session()
-    load_config()
-    EXCLUDED_DOMAINS = config['EXCLUDED_DOMAINS']
-    THREAD_COUNT = config['THREAD_COUNT']
-    PROXY_TYPE = config['PROXY_TYPE']
-    USER_AGENT = random_firefox_ua()
-    RUN_VULN_SCAN = config['RUN_VULN_SCAN']
-    SAFE_THREAD_COUNT = calc_safe_threads()
+    config: Optional[Config] = load_config()
+    if config is None:
+        handle_failure_point_and_exit("main.py", "loading config file")
 
+    # assert config is not None
     # Load queries from queries.txt
     queries = load_queries()
 
-    try:
-        message = (
-            f"Invalid thread count '{THREAD_COUNT}' provided in 'config.ini'. "
-            f"Thread count must be a positive integer between 1-{SAFE_THREAD_COUNT}."
-        )
-
-        if THREAD_COUNT <= 0 or THREAD_COUNT >= SAFE_THREAD_COUNT:
-            handle_failure_point(location=get_error_location(), task="checking thread count", error_string=message)
-            exit()
-
-    except Exception as e:
-        handle_failure_point(location=get_error_location(), task="setting up thread count", e=e)
-        exit()
-
     # Function to process each query
-    def process_query(query_string):
+    def process_query(query_string: str) -> Tuple[str, List[str]]:
+        USER_AGENT = random_firefox_ua()
         try:
             browser = None
             retries = 5
-            attempts = 0
-            
-            while browser is None and attempts < retries:
-                browser = initialize_browser(use_proxy=True, proxy_type=PROXY_TYPE, user_agent=USER_AGENT)
-                attempts += 1
-                if browser is None:
-                    print_red(f"Failed to initialize browser, retrying...")
-            
-            if browser is None:
-                return
 
-            thread_id = f'Thread {str(get_thread_id())}'
+            for _ in range(retries):
+                browser = initialize_browser(use_proxy=True, proxy_type=config.proxy_type, user_agent=USER_AGENT)
+                if browser is not None:
+                    break
+                print_red(f"Failed to initialize browser, retrying...")
+
+            if browser is None:
+                return query_string, []
+
+            thread_id = f"Thread {get_thread_id()}"
             print_blue(f"[{thread_id}]: Processing query: {query_string}")
 
             # Part one
             first_search_operator = get_first_operator(query_string)
-            first_dork_decoded = str(b'\x12\x0c', 'utf-8') + 'gws-wiz-serp"E' + first_search_operator
+            first_dork_decoded = str(b"\x12\x0c", "utf-8") + 'gws-wiz-serp"E' + first_search_operator
 
             # Part two
             inurl = inurl_queries(query_string)
@@ -76,9 +61,13 @@ def main():
             after = after_queries(query_string)
             before = before_queries(query_string)
             negatives = negative_queries(query_string)
-            operators_string_decoded = ' '.join(filter(None, [inurl, intext, ext, intitle, site, numrange, after, before, negatives]))
+            operators_string_decoded = " ".join(
+                filter(None, [inurl, intext, ext, intitle, site, numrange, after, before, negatives])
+            )
 
-            gs_lp_string = get_gs_lp(first_dork_decoded, operators_string_decoded, first_search_operator)  # Google search location profile
+            gs_lp_string = get_gs_lp(
+                first_dork_decoded, operators_string_decoded, first_search_operator
+            )  # Google search location profile
             search_link = generate_search_link(query_string, gs_lp_string)
 
             # Make search request and process results
@@ -86,17 +75,17 @@ def main():
 
             if response_text == "swap proxy":
                 print_blue(f"[{thread_id}]: Swapping proxy for query: {query_string}")
-                proxy_swapped = swap_proxy(browser, PROXY_TYPE=PROXY_TYPE)
+                proxy_swapped = swap_proxy(browser, PROXY_TYPE=config.proxy_type)
                 if not proxy_swapped:
                     handle_failure_point("Unable to swap proxy, exiting application with links parsed")
                     return "break"
                 solver = RecaptchaSolver()
-                if solver.solveCaptcha(browser, thread_id) is False:
+                if not solver.solveCaptcha(browser, thread_id):
                     browser.quit()
                     print_red(f"[{thread_id}]: Failed to solve captcha.")
 
             extracted_hrefs = extract_hrefs(response_text)
-            cleaned_links = clean_hrefs(extracted_hrefs, EXCLUDED_DOMAINS)
+            cleaned_links = clean_hrefs(extracted_hrefs, config.excluded_domains)
             print_green(f"[{thread_id}]: Finished processing query: {query_string} with {len(cleaned_links)} unique links")
             return query_string, cleaned_links
         except Exception as e:
@@ -108,7 +97,7 @@ def main():
 
     # Process each query and collect results using multithreading
     all_cleaned_links = []
-    with ThreadPoolExecutor(max_workers=THREAD_COUNT) as executor:
+    with ThreadPoolExecutor(max_workers=config.thread_count) as executor:
         future_to_query = {executor.submit(process_query, query): query for query in queries}
         for future in as_completed(future_to_query):
             query = future_to_query[future]
@@ -127,8 +116,9 @@ def main():
     # Export all collected links
     export_links(unique_cleaned_links)
 
-    if RUN_VULN_SCAN:
+    if config.run_vuln_scan:
         check_links_for_keywords(unique_cleaned_links)
+
 
 if __name__ == "__main__":
     try:

@@ -1,6 +1,9 @@
 from utilities.colored import print_red
 import inspect
 
+from typing import Optional
+
+
 def get_error_location():
     try:
         frame = inspect.currentframe()
@@ -13,14 +16,19 @@ def get_error_location():
     except Exception as e:
         return f"Unknown exception occurred while grabbing error location:\n{e}"
 
-def handle_generic_error(location:str, task:str, e:Exception):
+
+def handle_generic_error(location: str, task: str, e: Exception):
     print_red(f"An exception occurred in:\n{location}\nwhile {task}, please see below.\n{e}")
 
-def handle_generic_error_without_location(e:Exception):
-    print_red(f"An exception occurred in while extracting hrefs from response content, please see below.\n")
+
+def handle_generic_error_without_location(e: Exception):
+    print_red("An exception occurred in while extracting hrefs from response content, please see below.\n")
     print_red(e)
 
-def handle_failure_point(location: str = None, task: str = None, e: Exception = None, error_string: str = None):
+
+def handle_failure_point(
+    location: Optional[str] = None, task: Optional[str] = None, e: Optional[Exception] = None, error_string: Optional[str] = None
+):
     if location and task and e:
         print_red(f"An exception occurred in: {location}\nwhile {task}, please see below.\n{e}")
     elif location and task and error_string:
@@ -32,7 +40,10 @@ def handle_failure_point(location: str = None, task: str = None, e: Exception = 
     elif e:
         print_red("An unknown error occurred.\n")
 
-def handle_failure_point_and_exit(location: str = None, task: str = None, e: Exception = None, error_string: str = None):
+
+def handle_failure_point_and_exit(
+    location: Optional[str] = None, task: Optional[str] = None, e: Optional[Exception] = None, error_string: Optional[str] = None
+):
     if error_string:
         print_red(error_string)
     elif location and task:

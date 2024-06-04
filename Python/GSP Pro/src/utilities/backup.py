@@ -6,23 +6,24 @@ import os
 import shutil
 import tempfile
 
+
 # Returns parent directory of current project
 def get_parent_path():
     try:
         location = "utilities.backup.get_parent_path()"
-        task = "getting parent path" 
+        task = "getting parent path"
         # Grabs the location of the current file (functions.py)
         functions_file_path = Path(__file__).resolve()
-        
+
         # Get the directory where the current script exists
         utilities_directory = functions_file_path.parent
-        
+
         # Grabs the parent directory of the child directory `utilities`
         parent_directory = utilities_directory.parent
-        
+
         # Converts the parent directory path object to a string then returns it
         return str(parent_directory)
-    
+
     except FileNotFoundError as e:
         handle_generic_error(location, task, e)
     except PermissionError as e:
@@ -31,6 +32,7 @@ def get_parent_path():
         handle_generic_error(location, task, e)
     return None
 
+
 # Appends the backup directory to the parent directory
 def get_backup_directory_path():
     parent_directory = get_parent_path()
@@ -38,17 +40,18 @@ def get_backup_directory_path():
         return os.path.join(parent_directory, "data", "backups")
     return None
 
+
 # Writes links.txt to a text file with current timestamp in the 'data/backups' directory
 def backup_last_session():
     location = "utilities.backup.backup_old_links_files()"
-    task = "getting parent path" 
+    task = "getting parent path"
     try:
         # Get a list of files in the current directory
         dir_list = os.listdir(os.getcwd())
 
         # Filter out the csv files that contain "validated_emails" in their filenames
         old_links_files = [file for file in dir_list if "links" in file and file.endswith(".txt")]
-       
+
         # Create a directory to store the backup files if it doesn't exist
         backup_folder = get_backup_directory_path()
         if not os.path.exists(backup_folder):
@@ -78,7 +81,6 @@ def backup_last_session():
 
         else:
             print_red("No previous session found, continuing without backup.\n")
-    
+
     except Exception as e:
         handle_generic_error(location, task, e)
-

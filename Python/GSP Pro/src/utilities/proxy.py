@@ -1,14 +1,16 @@
-from utilities.colored import print_blue
 from utilities.errors import get_error_location, handle_failure_point_and_exit
 import os
 import random
 import requests
+from utilities.config import ProxyType
+
+from typing import List, Optional
 
 
-def load_proxies():
+def load_proxies() -> List[str]:
     try:
-        filename = os.path.join(os.getcwd(), 'proxies.txt')
-        with open(filename, 'r') as file:
+        filename = os.path.join(os.getcwd(), "proxies.txt")
+        with open(filename, "r") as file:
             return file.read().split("\n")
     except FileNotFoundError as e:
         location = get_error_location()
@@ -31,7 +33,8 @@ def load_proxies():
         task = "loading proxies"
         handle_failure_point_and_exit(location, task, e)
 
-def random_proxy():
+
+def random_proxy() -> Optional[str]:
     try:
         return random.choice(load_proxies())
     except IndexError as e:
@@ -45,46 +48,35 @@ def random_proxy():
         handle_failure_point_and_exit(location, task, e)
         return None
 
-def needs_auth(e:Exception):
+
+def needs_auth(e: Exception) -> bool:
     return "Proxy Authentication Required" in str(e)
 
-def timed_out(e:Exception):
+
+def timed_out(e: Exception) -> bool:
     return "Cannot connect to proxy" or "Read timed out" in str(e)
 
-def valid_type(proxy_type:str):
-    return proxy_type.lower() in ["http", "https", "socks4", "socks5"]
-    
-def valid_proxy(proxy: str, proxy_type:str):
+
+def valid_proxy(proxy: str, proxy_type: ProxyType) -> bool:
     try:
-        if proxy_type and not valid_type(proxy_type):
-            location = get_error_location()
-            task = "verifying proxy due to invalid type provided"
-            handle_failure_point_and_exit(location, task)
-            return False
-        
         if proxy in ["", None]:
             location = get_error_location()
             task = "verifying proxy, proxy selected is an empty or null value"
             handle_failure_point_and_exit(location, task)
 
-        proxies = {
-            "http": f'{proxy_type}://{proxy}',
-            "https": f'{proxy_type}://{proxy}'
-        }
+        proxies = {"http": f"{proxy_type}://{proxy}", "https": f"{proxy_type}://{proxy}"}
 
         response = requests.get("https://httpbin.org/ip", proxies=proxies, timeout=10)
         response.raise_for_status()
 
-        origin_ip = response.json().get("origin")    
-        if origin_ip and proxy.split(':')[0] in origin_ip:
-            return True
-        return False
-    
+        origin_ip = response.json().get("origin")
+        return origin_ip and proxy.split(":")[0] in origin_ip
+
     except requests.exceptions.ProxyError as e:
         location = get_error_location()
-        if needs_auth(e) is True:
+        if needs_auth(e):
             task = f"accessing proxy due to an authentication error using: {proxy}\n"
-        elif timed_out(e) is True:
+        elif timed_out(e):
             task = f"making connection using: {proxy}"
         else:
             task = "verifying proxy due to proxy error"
@@ -105,7 +97,6 @@ def valid_proxy(proxy: str, proxy_type:str):
         location = get_error_location()
         task = "verifying proxy due to general exception"
         handle_failure_point_and_exit(location, task, e)
-        #print(e)
-        #print("In valid_proxy()")
+        # print(e)
+        # print("In valid_proxy()")
         return False
-
