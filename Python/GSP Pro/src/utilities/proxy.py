@@ -59,6 +59,7 @@ def timed_out(e: Exception) -> bool:
 
 def valid_proxy(proxy: str, proxy_type: ProxyType) -> bool:
     try:
+        proxy_type = proxy_type.name.lower()
         if proxy in ["", None]:
             location = get_error_location()
             task = "verifying proxy, proxy selected is an empty or null value"

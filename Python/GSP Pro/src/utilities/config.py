@@ -5,11 +5,11 @@ from utilities.colored import print_red, print_green
 from utilities.errors import handle_failure_point_and_exit
 from utilities.threads import calc_safe_threads
 
-from typing import Dict, Any, List, Optional, Self, cast
-from enum import StrEnum
+from typing import List, Optional
+from enum import Enum
 
 
-class ProxyType(StrEnum):
+class ProxyType(Enum):
     HTTP = "http"
     HTTPS = "https"
     SOCKS4 = "socks4"

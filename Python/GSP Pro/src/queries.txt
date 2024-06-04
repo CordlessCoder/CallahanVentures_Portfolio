@@ -1,1 +1,0 @@
-ext:pdf site:s3.amazonaws.com

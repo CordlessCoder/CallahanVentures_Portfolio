@@ -14,9 +14,7 @@ thread_counter: int = 0
 
 def calc_safe_threads() -> int:
     max_threads = calc_max_threads()
-    if max_threads and isinstance(max_threads, float):
-        return max((max_threads + 1) // 2, 1)
-    return 1
+    return max((max_threads + 1) // 2, 1)
 
 
 def calc_max_threads() -> int:
